@@ -1,0 +1,178 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Compete</title>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+       <![endif]-->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/login_register.css" rel="stylesheet" type="text/css"/>
+        <!-- start plugins -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!----font-Awesome----->
+        <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+        <!----font-Awesome----->
+    </head>
+    <body>
+        <div class="header_bg1">
+            <div class="container">
+                <div class="row header">
+                    <div class="logo navbar-left">
+                        <h1><a href="index.html">Learner </a></h1>
+                    </div>
+                    <div class="h_search navbar-right">
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row h_menu">
+                    <nav class="navbar navbar-default navbar-left" role="navigation">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index1.jsp">Home</a></li>
+                                <li><a href="contest_problem.jsp">Compete</a></li>
+                                <li><a href="contest_problem.jsp">Practice</a></li>
+                                <li><a href="current_rank.jsp">Ranking</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                        <!-- start soc_icons -->
+                    </nav>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+
+
+        <div class="main">
+            <div class="header" >
+                <h1>Login or Create a Account!</h1>
+            </div>
+
+            <form name="register_form" action="register" method="POST">
+                <ul class="left-form">
+                    <h2>New Account:</h2>
+
+                    
+                    <li>
+                        <input type="text"   placeholder="Email" name="email" required/><div style="color: red">*</div>
+                        <div class="clear"> </div>
+                    </li> 
+                     <li>
+                        <input type="text"   placeholder="Name" name="name" required/><div style="color: red">*</div>
+                        <div class="clear"> </div>
+                    </li> 
+                    <div style="padding: 10px">
+                        Branch :  <select name="branch">
+                            <option>CSE</option>
+                            <option>ME</option>
+                            <option>CE</option>
+                            <option>ECE</option>
+                            <option>EE</option>
+                        </select>
+                    </div>
+                    <div style="padding: 10px">
+                        Year :  <select name="year">
+                            <option>I</option>
+                            <option>II</option>
+                            <option>III</option>
+                            <option>IV</option>
+                            
+                        </select>
+                    </div>
+                    <li>
+                        <input type="password"   placeholder="password" name="pass" required/><div style="color: red">*</div>
+                        <div class="clear"> </div>
+                    </li> 
+                    
+                    <p id="errorMsg" style="color: red"></p>
+                   
+
+                    <input type="submit" onclick="return validateFormFiels()" value="Create Account">
+                    <div class="clear"> </div>
+                </ul>
+                </form>
+            <form action="user_auth" method="post">
+                <ul class="right-form">
+                    <h3>Login:</h3>
+                    <div >
+                        <li><input type="text" name="email" placeholder="Email" required/></li>
+                        <li> <input type="password" name="pass" placeholder="Password"  required/></li>
+                        <h4 onclick="forgotPassword()"><a href="#">I forgot my Password!</a></h4>
+                        <input type="submit"  value="Login" >
+                    </div>
+                    <div class="clear"> </div>
+                </ul>
+                </form>
+                <div class="clear"> </div>
+
+
+        </div>
+
+
+        <div class="main_bg"><!-- start main -->
+            <div class="container">
+                <div class="about details row">
+
+                </div>
+            </div><!-- end main -->
+
+            <div class="footer_bg"><!-- start footer -->
+                <div class="container">
+                    <div class="row  footer">
+                        <div class="copy text-center">
+                            <p class="link"><span>&#169; All rights reserved </span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script >
+            
+            function validateFormFiels(){
+                var email = new String(document.register_form.email.value);
+                var password = document.register_form.pass.value;
+                var atIndex = email.indexOf("@");
+                var dotIndex = email.indexOf(".");
+                if(atIndex < 1 || (dotIndex - atIndex) < 2){
+                    document.getElementById("errorMsg").innerHTML = "Invalid Email"
+                    return false;
+                }
+                
+                if(password.length < 8){
+                    document.getElementById("errorMsg").innerHTML = "Password must be of 8 characters or more";
+                    return false;
+                }
+                return true;
+            }
+            
+            function forgotPassword(){
+                
+                alert("Password will be sent to your registered email");
+            }
+            
+            
+            </script>
+    </body>
+</html>
